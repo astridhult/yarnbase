@@ -32,10 +32,10 @@ class Project(models.Model):
     notes = models.TextField(null=True, blank=True)
     recipient = models.CharField(max_length=200, null=True, blank=True)
     size = models.CharField(max_length=200, null=True, blank=True)
-    status_options = [("planned","planned"), ("in progress", "in progress"), ("finished", "finished"), ("frogged", "frogged")]
+    status_options = [("planned","Planned"), ("in progress", "In progress"), ("finished", "Finished"), ("frogged", "Frogged")]
     status = models.CharField(max_length=200, choices=status_options)
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.get_status_display()}"
 
 
 class StashEntry(models.Model):
